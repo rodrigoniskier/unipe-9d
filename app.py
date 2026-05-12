@@ -326,7 +326,7 @@ if submitted:
         f"DIAGNÓSTICO;{diag}\n"
         f"FAILS CRÍTICOS;{', '.join(fail_list) if has_fail else 'Nenhum'}\n"
         f"NÃO CONFORMIDADES;{' | '.join(nc)}\n"
-        f"PLANO CORRETIVO;{' | '.join([f\"{row['Problema Identificado']} -> {row['Ação Proposta']} ({row['Prioridade']})\" for _, row in edited_df.iterrows()])}\n\n"
+        f"PLANO CORRETIVO;{' | '.join([f\{row['Problema Identificado']} -> {row['Ação Proposta']} ({row['Prioridade']})\" for _, row in edited_df.iterrows()])}\n\n"
         f"Relatório gerado em {datetime.now().strftime('%d/%m/%Y %H:%M')} conforme Instrumento de Adequação à Matriz 9D."
     )
     st.download_button(
