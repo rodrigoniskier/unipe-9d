@@ -241,7 +241,7 @@ if submitted:
     total_b = sum(scores_b.values())
     total_c = sum(scores_c.values())
     total_raw = total_a + total_b + total_c
-    max_possible = len(DOM_A) + len(DOM_B) + len(DOM_C) * 2  # Cada item vale no máximo 2
+    (len(DOM_A) * 2) + (len(DOM_B) * 2) + (len(DOM_C) * 2)  # Cada item vale no máximo 2
     
     # Normaliza para a escala oficial do documento (máx 84 pontos)
     total_scaled = round((total_raw / max_possible) * 84)
@@ -326,8 +326,7 @@ if submitted:
         f"DIAGNÓSTICO;{diag}\n"
         f"FAILS CRÍTICOS;{', '.join(fail_list) if has_fail else 'Nenhum'}\n"
         f"NÃO CONFORMIDADES;{' | '.join(nc)}\n"
-        f"PLANO CORRETIVO;{' | '.join([f\{row['Problema Identificado']} -> {row['Ação Proposta']} ({row['Prioridade']})\" for _, row in edited_df.iterrows()])}\n\n"
-        f"Relatório gerado em {datetime.now().strftime('%d/%m/%Y %H:%M')} conforme Instrumento de Adequação à Matriz 9D."
+f"PLANO CORRETIVO;{' | '.join([f\"{row['Problema Identificado']} -> {row['Ação Proposta']} ({row['Prioridade']})\" for _, row in edited_df.iterrows()])}\n\n"        f"Relatório gerado em {datetime.now().strftime('%d/%m/%Y %H:%M')} conforme Instrumento de Adequação à Matriz 9D."
     )
     st.download_button(
         label="📥 Baixar Relatório em CSV",
